@@ -7,7 +7,56 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="header"></div>
+    <div class="logo">
+        <img src="/assets/cake.png" alt="logo">
+        <h1>Cake World</h1>
+    </div>
+    <div class="container">
+        <div class="col" style="position: relative;">
+            <div class="image">
+                <img id="img" src="assets/list_template.png" alt="list_template">
+            </div>
+            <div class="row">
+                <h1>PRICES</h1>
+                <span>Chocolate ~~~~~~~~~~~~~ 300</span>
+                <span>Strawberry ~~~~~~~~~~ 100</span>
+                <span>Butterscotch ~~~~~~~~ 200</span>
+                <span>Vannila ~~~~~~~~~~~~~~~~ 250</span>
+                <span>Redvelvet ~~~~~~~~~~~~ 350</span>
+            </div>
+        </div>
+        <div class="col"> 
+            <img id="img2" src="/assets/candle.png" alt="candel" style="width: 50px; display:none;">
+            <div class="layer" id="layer5" style="display: none;"></div>
+            <div class="layer" id="layer4" style="display: none;"></div>
+            <div class="layer" id="layer3" style="display: none;"></div>
+            <div class="layer" id="layer2" style="display: none;"></div>
+            <div class="layer" id="layer1" style="display: none;"></div>
+        </div>
+        <div class="col">
+            <div class="image">
+                <img id="img" src="assets/list_template.png" alt="list_template">
+            </div>
+            <div class="row">
+                <h1>BILL</h1>
+                <span class="bill" style="display: none;">Chocolate ~~~~~~~~~~~~~ 300</span>
+                <span class="bill" style="display: none;">Strawberry ~~~~~~~~~~ 100</span>
+                <span class="bill" style="display: none;">Butterscotch ~~~~~~~~ 200</span>
+                <span class="bill" style="display: none;">Vannila ~~~~~~~~~~~~~~~~ 250</span>
+                <span class="bill" style="display: none;">Redvelvet ~~~~~~~~~~~~ 350</span>
+                <p id="total" style="display: none;"></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="button btn-Chocolate">Chocolate</button>
+        <button class="button btn-Strawberry">Strawberry</button>
+        <button class="button btn-Butterscotch">Butterscotch</button>
+        <button class="button btn-Vannila">Vannila</button>
+        <button class="button btn-Redvelvet">Redvelvet</button>
+        <button class="button" id="id" onclick="myFunction()">BUY</button>
+    </div>
 </body>
 <script src="/script.js"></script>
 </html>
