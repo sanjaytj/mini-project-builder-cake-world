@@ -130,7 +130,7 @@ function clickBuy(){
     document.querySelector('.totalBill').appendChild(newElement);
     let cakeImage = document.createElement('img');
     cakeImage.id='cakeImage'
-    cakeImage.src='..\assets\candle.png'
+    cakeImage.src='..\assets\candles.jfif'
     document.querySelector('#cake').prepend(cakeImage)
     isBuyActive=!isBuyActive
   }
