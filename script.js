@@ -1,155 +1,144 @@
+// total price to be paid by customer 
+var totalPrice = 0;
+var buyButton = false;
+//indicates layer number
+var noOfLayers = 0;
 
-var flavor=[];
-
-var color = {
-  chocolate:"7B3F00", 
-  strawberry:"fc5a8d",
-  butterscotch:"ffe461",
-  vannila:"F3E5AB",
-  redvelvet:"9c0000"
-};
-
-var price = {
-  chocolate: 300,
-  strawberry: 100,
-  butterscotch: 200,
-  vannila: 250,
-  redvelvet: 350
-};
+var isBuyActive = true;
 
 var state = {
-  chocolate: true,
-  strawberry: true,
-  butterscotch: true,
-  vannila: true,
-  redvelvet: true
-};
-
-function renderAll() {
-  renderlayer();
-  renderBillBoard();
-  renderPrice();
+  chocolate:false,
+  strawBerry:false,
+  vanilla:false,
+  redVelvet:false,
+  butterScotch:false
 }
 
-function renderaddflavor(ingredient) {
-  flavor.push(ingredient);
+var layerWidth = {
+  1:'245px',
+  2:'200px',
+  3:'160px',
+  4:'120px',
+  5:'80px'
 }
 
-function renderremoveflavor(ingredient) {
-  flavor=flavor.filter(ele => ele !== ingredient);
+var price = {
+  chocolate:300,
+  strawBerry:100,
+  butterScotch:200,
+  vanilla:250,
+  redVelvet:350
 }
 
-function renderlayer(){
-  let layer = document.getElementsByClassName("layer");
-  let str1="#";
-
-  for(let i=0;i<layer.length;i++)
-    layer[i].style.display="none";
-  
-  for(let i=0,j=4;i<flavor.length;i++,j--){
-    let str2=color[flavor[i]];
-    let str3=str1.concat(str2);
-    layer[j].style.backgroundColor=str3;
-    layer[j].style.display="inherit";
+function renderChocolate(){
+  if(noOfLayers==5){
+    alert("sorry! You cannot add more than 5 layers :( ");
   }
-}
-
-function renderBillBoard(){
-  var element = document.querySelectorAll(".bill");
-  console.log(element);
-  var i=0;
-  for (const property in state) {
-    if(state[property]===false)
-      element[i].style.display="inherit";
-    else
-      element[i].style.display="none";
-    i++;  
+  if(noOfLayers < 5 && isBuyActive){
+    noOfLayers++
+    let newElement = document.createElement('div');
+    newElement.classList.add('layer1');
+    newElement.style.width = layerWidth[noOfLayers];
+    document.querySelector('#cake').prepend(newElement)
+    totalPrice+= price["chocolate"]
+    let newItem = document.createElement('div');
+    newItem.classList.add('item');
+    newItem.innerHTML = 'Chocolate----300'
+    document.querySelector('.totalBill').append(newItem)
   }
 }
 
-function renderPrice(){
-  var total=0;
-  for(let i=0;i<flavor.length;i++){
-    total=total+price[flavor[i]];
+function renderStrawBerry(){
+  if(noOfLayers==5){
+    alert("sorry! You cannot add more than 5 layers :( ");
   }
-  var x = document.getElementById("total");
-
-  x.innerHTML=`Total ~~~~~~ `+total;
+  if(noOfLayers < 5 && isBuyActive){
+    noOfLayers++
+    let newElement = document.createElement('div');
+    newElement.classList.add('layer2');
+    newElement.style.width = layerWidth[noOfLayers];
+    document.querySelector('#cake').prepend(newElement)
+    totalPrice+= price["strawBerry"]
+    let newItem = document.createElement('div');
+    newItem.classList.add('item');
+    newItem.innerHTML = 'StrawBerry----100'
+    document.querySelector('.totalBill').append(newItem)
+  }
 }
 
-document.querySelector(".btn-Chocolate").onclick = function () {
-  if(state.chocolate===true){
-    document.querySelector(".btn-Chocolate").classList.add("active");
-    renderaddflavor("chocolate");
+function renderButterScotch(){
+  if(noOfLayers==5){
+    alert("sorry! You cannot add more than 5 layers :( ");
   }
-    
-  else{
-    document.querySelector(".btn-Chocolate").classList.remove("active");
-    renderremoveflavor("chocolate");
+  if(noOfLayers < 5 && isBuyActive){
+    noOfLayers++
+    let newElement = document.createElement('div');
+    newElement.classList.add('layer3');
+    newElement.style.width = layerWidth[noOfLayers];
+    document.querySelector('#cake').prepend(newElement)
+    totalPrice+= price["butterScotch"]
+    let newItem = document.createElement('div');
+    newItem.classList.add('item');
+    newItem.innerHTML = 'butterScotch----100'
+    document.querySelector('.totalBill').append(newItem)
   }
-      
-  state.chocolate = !state.chocolate;
-  renderAll();
-};
-
-document.querySelector(".btn-Strawberry").onclick = function () {
-  if(state.strawberry===true){
-    document.querySelector(".btn-Strawberry").classList.add("active");
-    renderaddflavor("strawberry");
-  }
-
-  else{
-    document.querySelector(".btn-Strawberry").classList.remove("active");
-    renderremoveflavor("strawberry");
-  }
-      
-  state.strawberry = !state.strawberry;
-  renderAll();
-};
-
-document.querySelector(".btn-Butterscotch").onclick = function () {
-  if(state.butterscotch===true){
-    document.querySelector(".btn-Butterscotch").classList.add("active");
-    renderaddflavor("butterscotch");
-  }
-    
-  else{
-    document.querySelector(".btn-Butterscotch").classList.remove("active");
-    renderremoveflavor("butterscotch");
-  }
-  state.butterscotch = !state.butterscotch;
-  renderAll();
-};
-
-document.querySelector(".btn-Vannila").onclick = function () {
-  if(state.vannila===true){
-    document.querySelector(".btn-Vannila").classList.add("active");
-    renderaddflavor("vannila");
-  }
-
-  else{
-    document.querySelector(".btn-Vannila").classList.remove("active");
-    renderremoveflavor("vannila");
-  }
-  state.vannila = !state.vannila;
-  renderAll();
-};
-
-document.querySelector(".btn-Redvelvet").onclick = function () {
-  if(state.redvelvet===true){
-    document.querySelector(".btn-Redvelvet").classList.add("active");
-    renderaddflavor("redvelvet");
-  }
-  else{
-    document.querySelector(".btn-Redvelvet").classList.remove("active");
-    renderremoveflavor("redvelvet");
-  }
-     
-  state.redvelvet = !state.redvelvet;
-  renderAll();
-};
-
-function myFunction(){
-  document.getElementById("total").style.display="inherit";
-  document.getElementById("img2").style.display="inherit"; 
 }
+
+function renderVanilla(){
+  if(noOfLayers==5){
+    alert("sorry! You cannot add more than 5 layers :( ");
+  }
+  if(noOfLayers < 5 && isBuyActive){
+    noOfLayers++
+    let newElement = document.createElement('div');
+    newElement.classList.add('layer4');
+    newElement.style.width = layerWidth[noOfLayers];
+    document.querySelector('#cake').prepend(newElement)
+    totalPrice+= price["vanilla"]
+    let newItem = document.createElement('div');
+    newItem.classList.add('item');
+    newItem.innerHTML = 'vanilla----100'
+    document.querySelector('.totalBill').append(newItem)
+  }
+}
+
+function renderRedVelvet(){
+  if(noOfLayers==5){
+    alert("sorry! You cannot add more than 5 layers :( ");
+  }
+  if(noOfLayers < 5 && isBuyActive){
+    noOfLayers++
+    let newElement = document.createElement('div');
+    newElement.classList.add('layer5');
+    newElement.style.width = layerWidth[noOfLayers];
+    document.querySelector('#cake').prepend(newElement)
+    totalPrice+= price["redVelvet"]
+    let newItem = document.createElement('div');
+    newItem.classList.add('item');
+    newItem.innerHTML = 'redVelvet----100'
+    document.querySelector('.totalBill').append(newItem)
+  }
+}
+
+function clickBuy(){
+  if(isBuyActive){
+    console.log("working");
+    console.log("Let Us Start");
+    let newElement = document.createElement('div');
+    newElement.classList.add('total')
+    newElement.innerHTML=`Total----${totalPrice}`
+    document.querySelector('.totalBill').appendChild(newElement);
+    let cakeImage = document.createElement('img');
+    cakeImage.id='cakeImage'
+    cakeImage.src='..\assets\candle.png'
+    document.querySelector('#cake').prepend(cakeImage)
+    isBuyActive=!isBuyActive
+  }
+}
+
+document.querySelector('#buttonChocolate').addEventListener("click", renderChocolate);
+document.querySelector('#buttonStrawBerry').addEventListener("click", renderStrawBerry);
+document.querySelector('#buttonButterScotch').addEventListener("click", renderButterScotch);
+document.querySelector('#buttonVanilla').addEventListener("click", renderVanilla);
+document.querySelector('#buttonRedVelvet').addEventListener("click", renderRedVelvet);
+document.querySelector('#buttonBuy').addEventListener("click", clickBuy);
