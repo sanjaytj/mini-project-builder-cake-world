@@ -37,16 +37,18 @@ function renderChocolate(){
   if(noOfLayers < 5 && isBuyActive){
     noOfLayers++
     let newElement = document.createElement('div');
-    newElement.classList.add('layer1');
-    newElement.style.width = layerWidth[noOfLayers];
-    document.querySelector('#cake').prepend(newElement)
-    totalPrice+= price["chocolate"]
-    let newItem = document.createElement('div');
+    newElement.classList.add('layer1');              //toggles css class on element
+    newElement.style.width = layerWidth[noOfLayers]; // for the size of the layer
+    document.querySelector('#cake').prepend(newElement) // at the begining 
+    totalPrice+= price["chocolate"]                     // total price + price of "..."
+    let newItem = document.createElement('div');        
     newItem.classList.add('item');
-    newItem.innerHTML = 'Chocolate----300'
+    newItem.innerHTML = 'Chocolate----300'              
     document.querySelector('.totalBill').append(newItem)
   }
 }
+ 
+// we have to render the same for all the flavours 
 
 function renderStrawBerry(){
   if(noOfLayers==5){
